@@ -14,11 +14,23 @@ def insert_to_db():
     query = cursor.fetchall()
     titles = [title[0] for title in query]
     for title in titles:
-        url = urllib.request.urlopen(
-            'http://www.omdbapi.com/?t={}&type=movie&apikey=e8706d87'.format(title.replace(' ', '+'))
+        title = title.strip()
+
+        # LIST OF MOVIES WITH THIS TITLE
+        url_by_title = urllib.request.urlopen(
+            'http://www.omdbapi.com/?apikey=e8706d87&type=movie&s={}'.format(title.replace(' ', '+'))
         )
-        d = json.loads(url.read().decode())
-        movie_data = {key: d[key] if d[key] != 'N/A' else None for key in d if key in COLUMNS}
+        data = json.loads(url_by_title.read().decode())
+
+        # GET THE MOST POPULAR MOVIE WITH THIS NAME FROM LIST -> ImdbID TITLE
+        imdb_id = data['Search'][0]['imdbID']
+
+        # GET MOVIE DATA BY IMDB ID
+        url_by_id = urllib.request.urlopen(
+            'http://www.omdbapi.com/?apikey=e8706d87&type=movie&i={}'.format(imdb_id)
+        )
+        data = json.loads(url_by_id.read().decode())
+        movie_data = {key: data[key] if data[key] != 'N/A' else None for key in data if key in COLUMNS}
 
         # SET STRING YEAR TO INTEGER
         if movie_data['Year']:
