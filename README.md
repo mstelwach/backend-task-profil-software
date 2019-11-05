@@ -53,6 +53,9 @@ $ python movies --example_function.py
     - Most nominations
     - Most Oscars
     - Highest IMDB Rating
+    
+  Example input:
+  
   ```
   $ python movies.py --highscores
   ```
