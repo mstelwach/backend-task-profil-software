@@ -47,12 +47,12 @@ $ python movies --example_function.py
   ```
   
 - Showing current highscores in :
-            - Runtime
-            - Box office earnings
-            - Most awards won
-            - Most nominations
-            - Most Oscars
-            - Highest IMDB Rating
+    - Runtime
+    - Box office earnings
+    - Most awards won
+    - Most nominations
+    - Most Oscars
+    - Highest IMDB Rating
   ```
   $ python movies.py --highscores
   ```
