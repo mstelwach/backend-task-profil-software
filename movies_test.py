@@ -33,11 +33,11 @@ class MoviesTest(unittest.TestCase):
 
     def test_movies_filter_by_awards_won_more_than_percent_nominations(self):
         query = self.m.filter_by('awards', '80')
-        self.assertEqual(len(query), 40)
+        self.assertEqual(len(query), 41)
 
     def test_movies_filter_by_language(self):
         query = self.m.filter_by('language', 'spanish')
-        self.assertEqual(len(query), 16)
+        self.assertEqual(len(query), 17)
 
     def test_movies_compare_by_rating(self):
         query = self.m.compare('imdb_rating', 'Seven Pounds', 'Memento')
@@ -60,7 +60,7 @@ class MoviesTest(unittest.TestCase):
             ('Runtime', 'Gone with the Wind', '3h58m'),
             ('Box Office', 'The Dark Knight', '$533,316,061'),
             ('IMDB Rating', 'The Shawshank Redemption', 9.3),
-            ('Oscars', 'Amadeus', 8),
+            ('Oscars', 'Ben Hur', 11),
             ('Awards Won', 'Boyhood', 171),
             ('Nominations', 'Boyhood', 209),
         ]
